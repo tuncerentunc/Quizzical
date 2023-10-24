@@ -38,6 +38,10 @@ button {
   height: 100vh;
 }
 
+.app--results {
+  color: #293264;
+}
+
 .start-screen {
   color: #293264;
   text-align: center;

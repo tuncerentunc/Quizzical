@@ -5,10 +5,10 @@ import { decode } from "html-entities"
 
 function App() {
     const [questionBlocks, setQuestionBlocks] = React.useState([])  // current questions with answers
-    const [selectedAnswer, setSelectedAnswer] = React.useState([])  // selected answers
+    const [selectedAnswers, setSelectedAnswers] = React.useState([])  // selected answers
     const [isStarted, setIsStarted] = React.useState(false)         // first screen state
     const [isGameOver, setIsGameOver] = React.useState(false)       // answer check state
-    const [restart, setRestart] = React.useState(false)             // each change fetches new data
+    const [restart, setRestart] = React.useState(false)             // if true, button restarts the game
     const [correctAnswerCount, setCorrectAnswerCount] = React.useState(0)  // correct answers count
     
     // questions jsx array to be rendered
@@ -19,8 +19,8 @@ function App() {
             questionText={questionBlock.questionText}
             answerAll={questionBlock.answerAllRandomOrder}
             correctAnswer={questionBlock.answerCorrect}
-            selectedAnswer={selectedAnswer}
-            setSelectedAnswer={setSelectedAnswer}
+            selectedAnswers={selectedAnswers}
+            setSelectedAnswers={setSelectedAnswers}
             isGameOver={isGameOver}
         />        
     })
@@ -68,7 +68,7 @@ function App() {
         setIsGameOver(true)
         
         const correctPlayerAnswerArr = questionBlocks.filter((question, index) => {
-            return question.answerCorrect === selectedAnswer[index]
+            return question.answerCorrect === selectedAnswers[index]
         })
         
         setCorrectAnswerCount(correctPlayerAnswerArr.length)
@@ -77,7 +77,7 @@ function App() {
     function restartGame() {
       setRestart(prevState => {
         setIsGameOver(false)
-        setSelectedAnswer("")
+        setSelectedAnswers("")
         return !prevState
       })
     }
@@ -90,7 +90,7 @@ function App() {
                 <div className="app--button-container">
                     {
                     isGameOver &&
-                    <p>
+                    <p className="app--results">
                         You scored {correctAnswerCount}/{questionBlocks.length} correct answer{correctAnswerCount > 1 && "s"}
                     </p>
                     }
