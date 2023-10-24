@@ -1,7 +1,7 @@
 # Quizzical
 Fetches data from https://opentdb.com/ and creates random trivia questions.
 
-# Tools used:
+## Tools used:
 HTML
 CSS
 React.js
