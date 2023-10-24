@@ -14,7 +14,6 @@ function QuestionBlock(props) {
         // set classes after checking the answers
         // correct answer
         if (answer === correctAnswer && props.isGameOver) {
-            answerClassName = "correct-answer"
         // incorrect selection
         } else if (answer !== correctAnswer && answer === selectedAnswer && props.isGameOver) {
             answerClassName = "incorrect-answer"
