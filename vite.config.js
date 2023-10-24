@@ -3,12 +3,12 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      external: [
-        "html-entities"
-      ]
-    }
-  },
+  // build: {
+  //   rollupOptions: {
+  //     external: [
+  //       "html-entities"
+  //     ]
+  //   }
+  // },
   plugins: [react()],
 })
