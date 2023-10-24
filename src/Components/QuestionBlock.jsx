@@ -11,7 +11,7 @@ export default function QuestionBlock(props) {
         // class for each selection
         if (answer === selectedAnswer) answerClassName = "selected-answer"
         
-        // classes after checking the answers
+        // set classes after checking the answers
         // correct selection
         if (answer === selectedAnswer && selectedAnswer === correctAnswer && props.isGameOver) {
             answerClassName = "correct-answer"
