@@ -48,6 +48,10 @@ button {
   margin-bottom: 0.1em;
 }
 
+.start-screen--info {
+  margin-bottom: 1em;
+}
+
 .check-btn {
   font-size: 0.875rem;
 }
