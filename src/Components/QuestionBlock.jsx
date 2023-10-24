@@ -1,6 +1,6 @@
 import { decode } from "html-entities"
 
-export default function QuestionBlock(props) {
+function QuestionBlock(props) {
     const selectedAnswer = props.selectedAnswer[props.questionId]
     const correctAnswer = props.correctAnswer
     
@@ -11,16 +11,14 @@ export default function QuestionBlock(props) {
         // class for each selection
         if (answer === selectedAnswer) answerClassName = "selected-answer"
         
-        // classes after checking the answers
-        // correct selection
-        if (answer === selectedAnswer && selectedAnswer === correctAnswer && props.isGameOver) {
+        // set classes after checking the answers
+        // correct answer
+        if (answer === correctAnswer && props.isGameOver) {
             answerClassName = "correct-answer"
         // incorrect selection
         } else if (answer !== correctAnswer && answer === selectedAnswer && props.isGameOver) {
             answerClassName = "incorrect-answer"
-        // highlights the correct answer if selection is incorrect
-        } else if (answer === correctAnswer && selectedAnswer !== correctAnswer && props.isGameOver) {
-            answerClassName = "correct-answer"
+        // rest of the answers
         } else if (props.isGameOver) {
             answerClassName = "other-answers"
         }
@@ -47,3 +45,5 @@ export default function QuestionBlock(props) {
         </div>
     )
 }
+
+export default QuestionBlock
