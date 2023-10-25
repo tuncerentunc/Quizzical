@@ -11,20 +11,6 @@ function App() {
     const [restart, setRestart] = React.useState(false)             // if true, button restarts the game
     const [correctAnswerCount, setCorrectAnswerCount] = React.useState(0)  // correct answers count
     
-    // questions jsx array to be rendered
-    const questionBlockElements = questionBlocks.map((questionBlock, index) => {
-        return <RenderQuestionBlock
-            key={index}
-            questionId={index}
-            questionText={questionBlock.questionText}
-            answerAll={questionBlock.answerAllRandomOrder}
-            correctAnswer={questionBlock.answerCorrect}
-            selectedAnswers={selectedAnswers}
-            setSelectedAnswers={setSelectedAnswers}
-            isGameOver={isGameOver}
-        />        
-    })
-    
     // fetches question data
     React.useEffect(() => {
         fetch(`https://opentdb.com/api.php?amount=5&category=15&type=multiple`)
@@ -41,6 +27,21 @@ function App() {
                 setQuestionBlocks(questionBlocks)
             })
     }, [restart])
+
+    // questions jsx array to be rendered
+    const questionBlockElements = questionBlocks.map((questionBlock, index) => {
+        return <RenderQuestionBlock
+            key={index}
+            questionId={index}
+            questionText={questionBlock.questionText}
+            answerAll={questionBlock.answerAllRandomOrder}
+            correctAnswer={questionBlock.answerCorrect}
+            selectedAnswers={selectedAnswers}
+            setSelectedAnswers={setSelectedAnswers}
+            isGameOver={isGameOver}
+        />        
+    })
+
     
     // creates a new question set from fetched data
     function createQuestionBlocks(questionText, answerCorrect, answerAllRandomOrder=[]) {
